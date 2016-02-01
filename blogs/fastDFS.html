@@ -1,0 +1,805 @@
+<!DOCTYPE html><html>
+
+<head>
+<meta charset="utf-8">
+<title>FastDFS安装及使用</title>
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+</head>
+<body>
+<h2 id="toc_0">FastDFS V5.5 集群安装 及 Java使用</h2>
+
+<h2 id="toc_1">安装依赖</h2>
+
+<blockquote>
+<p>下载libfastcommon源码</p>
+</blockquote>
+
+<pre><code class="language-none">cd /usr/src
+
+git clone https://github.com/happyfish100/libfastcommon.git</code></pre>
+
+<blockquote>
+<p>编译及安装</p>
+</blockquote>
+
+<pre><code class="language-none">cd libfastcommon/
+
+./make.sh
+
+./make.sh install</code></pre>
+
+<blockquote>
+<p>创建软链接</p>
+</blockquote>
+
+<pre><code class="language-none">ln -s /usr/lib64/libfastcommon.so /usr/local/lib/libfastcommon.so
+
+ln -s /usr/lib64/libfastcommon.so /usr/lib/libfastcommon.so
+
+ln -s /usr/lib64/libfdfsclient.so /usr/local/lib/libfdfsclient.so
+
+ln -s /usr/lib64/libfdfsclient.so /usr/lib/libfdfsclient.so</code></pre>
+
+<h2 id="toc_2">安装DFS</h2>
+
+<blockquote>
+<p>下载DFS</p>
+</blockquote>
+
+<pre><code class="language-none">wget http://nchc.dl.sourceforge.net/project/fastdfs/FastDFS%20Server%20Source%20Code/FastDFS%20Server%20with%20PHP%20Extension%20Source%20Code%20V5.05/FastDFS_v5.05.tar.gz</code></pre>
+
+<blockquote>
+<p>解压&amp;&amp;编译&amp;&amp;安装</p>
+</blockquote>
+
+<pre><code class="language-none">tar zxvf FastDFS_v5.05.tar.gz -C /usr/src/
+
+cd /usr/src/fastdfs-5.05/
+
+sed -i &#39;s#/usr/local/bin/#/usr/bin/#g&#39; init.d/fdfs_storaged
+
+sed -i &#39;s#/usr/local/bin/#/usr/bin/#g&#39; init.d/fdfs_trackerd
+
+./make.sh
+
+./make.sh install
+
+mkdir -p /home/fdfs/tracker
+
+cp /etc/fdfs/tracker.conf.sample /etc/fdfs/tracker.conf</code></pre>
+
+<blockquote>
+<p>修改配置</p>
+</blockquote>
+
+<pre><code class="language-none">vim /etc/fdfs/tracker.conf
+
+disabled=false
+bind_addr=
+port=22122
+connect_timeout=30
+network_timeout=60
+base_path=/home/fdfs/tracker/
+max_connections=256
+accept_threads=1
+work_threads=4
+store_lookup=1
+store_group=group1
+store_server=0
+store_path=0
+download_server=0
+reserved_storage_space = 10%
+log_level=info
+run_by_group=
+run_by_user=
+allow_hosts=*
+sync_log_buff_interval = 10
+check_active_interval = 120
+thread_stack_size = 64KB
+storage_ip_changed_auto_adjust = true
+storage_sync_file_max_delay = 86400
+storage_sync_file_max_time = 300
+use_trunk_file = false
+slot_min_size = 256
+slot_max_size =16MB
+trunk_file_size = 64MB
+trunk_create_file_advance = false
+trunk_create_file_time_base = 02:00
+trunk_create_file_interval = 86400
+trunk_create_file_space_threshold = 20G
+trunk_init_check_occupying = false
+trunk_init_reload_from_binlog = false
+trunk_compress_binlog_min_interval = 0
+use_storage_id = false
+storage_ids_filename = storage_ids.conf
+id_type_in_filename = ip
+store_slave_file_use_link = false
+rotate_error_log = false
+error_log_rotate_time=00:00
+rotate_error_log_size = 0
+log_file_keep_days = 0
+use_connection_pool = false
+connection_pool_max_idle_time = 3600
+http.server_port=8080
+http.check_alive_interval=30
+http.check_alive_type=tcp
+http.check_alive_uri=/status.html</code></pre>
+
+<blockquote>
+<p>启动tracker服务</p>
+</blockquote>
+
+<pre><code class="language-none">service fdfs_trackerd start
+
+cat /home/fdfs/tracker/logs/trackerd.log
+
+chkconfig --level 2345 fdfs_trackerd on
+
+ps -aux | grep fdfs_trackerd</code></pre>
+
+<blockquote>
+<p>编辑storage.conf配置文件</p>
+</blockquote>
+
+<pre><code class="language-none">mkdir -p /home/fdfs/storage
+
+cp /etc/fdfs/storage.conf.sample /etc/fdfs/storage.conf
+
+vim /etc/fdfs/storage.conf
+
+disabled=false
+group_name=group1
+bind_addr=
+client_bind=true
+port=23000
+connect_timeout=30
+network_timeout=60
+heart_beat_interval=30
+stat_report_interval=60
+base_path=/home/fdfs/storage/
+max_connections=256
+buff_size = 256KB
+accept_threads=1
+work_threads=4
+disk_rw_separated = true
+disk_reader_threads = 1
+disk_writer_threads = 1
+sync_wait_msec=50
+sync_interval=0
+sync_start_time=00:00
+sync_end_time=23:59
+write_mark_file_freq=500
+store_path_count=1
+store_path0=/home/fdfs/storage/
+subdir_count_per_path=256
+tracker_server=10.0.21.56:22122
+tracker_server=10.0.21.57:22122
+log_level=info
+run_by_group=
+run_by_user=
+allow_hosts=*
+file_distribute_path_mode=0
+file_distribute_rotate_count=100
+fsync_after_written_bytes=0
+sync_log_buff_interval=10
+sync_binlog_buff_interval=10
+sync_stat_file_interval=300
+thread_stack_size=512KB
+upload_priority=10
+if_alias_prefix=
+check_file_duplicate=0
+file_signature_method=hash
+key_namespace=FastDFS
+keep_alive=0
+use_access_log = false
+rotate_access_log = false
+access_log_rotate_time=00:00
+rotate_error_log = false
+error_log_rotate_time=00:00
+rotate_access_log_size = 0
+rotate_error_log_size = 0
+log_file_keep_days = 0
+file_sync_skip_invalid_record=false
+use_connection_pool = false
+connection_pool_max_idle_time = 3600
+http.domain_name=
+http.server_port=80</code></pre>
+
+<blockquote>
+<p>启动storaged服务</p>
+</blockquote>
+
+<pre><code class="language-none">service fdfs_storaged start
+
+cat /home/fdfs/storage/logs/storaged.log
+
+chkconfig --level 2345 fdfs_storaged on
+
+ps -aux | grep fdfs_storaged</code></pre>
+
+<h2 id="toc_3">安装客户端</h2>
+
+<blockquote>
+<p>配置客户端 </p>
+</blockquote>
+
+<pre><code class="language-none">ln -s /home/fdfs/storage/data /home/fdfs/storage/data/M00
+
+cp /etc/fdfs/client.conf.sample /etc/fdfs/client.conf
+
+vim /etc/fdfs/client.conf
+
+connect_timeout=30
+network_timeout=60
+base_path=/tmp
+tracker_server=10.0.21.56:22122
+tracker_server=10.0.21.57:22122
+log_level=info
+use_connection_pool = false
+connection_pool_max_idle_time = 3600
+load_fdfs_parameters_from_tracker=false
+use_storage_id = false
+storage_ids_filename = storage_ids.conf
+http.tracker_server_port=80</code></pre>
+
+<h2 id="toc_4">DFS测试</h2>
+
+<blockquote>
+<p>创建上传文件</p>
+</blockquote>
+
+<pre><code class="language-none">vi testUpload.txt   
+输入测试内容  
+保存并退出</code></pre>
+
+<blockquote>
+<p>上传测试</p>
+</blockquote>
+
+<pre><code class="language-none">fdfs_upload_file /etc/fdfs/client.conf testUpload.txt
+能返回类似&quot;group1/M00/00/00/wKgfolWmGAyAQSuqAABdrZgsqUU285.txt&quot;这样的路径即为成功！</code></pre>
+
+<blockquote>
+<p>下载测试</p>
+</blockquote>
+
+<pre><code class="language-none">fdfs_download_file /etc/fdfs/client.conf group1/M00/00/00/wKgfolWmGAyAQSuqAABdrZgsqUU285.txt</code></pre>
+
+<blockquote>
+<p>查看文件属性</p>
+</blockquote>
+
+<pre><code class="language-none">fdfs_file_info /etc/fdfs/client.conf group1/M00/00/00/wKgfolWmGAyAQSuqAABdrZgsqUU285.txt</code></pre>
+
+<blockquote>
+<p>删除文件</p>
+</blockquote>
+
+<pre><code class="language-none">fdfs_delete_file /etc/fdfs/client.conf group1/M00/00/00/wKgfolWmGoOEBO0bAAAAAHf4omo816.txt</code></pre>
+
+<h2 id="toc_5">DFS Java</h2>
+
+<blockquote>
+<p>Maven pom.xml 添加依赖</p>
+</blockquote>
+
+<pre><code class="language-none">&lt;dependency&gt;
+    &lt;groupId&gt;org.csource&lt;/groupId&gt;
+    &lt;artifactId&gt;fastdfs&lt;/artifactId&gt;
+    &lt;version&gt;${fastdfs.version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+
+<blockquote>
+<p>Java 代码</p>
+</blockquote>
+
+<pre><code class="language-none">package com.baofoo.example.diamond;
+
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
+import org.csource.common.NameValuePair;
+import org.csource.fastdfs.*;
+import javax.annotation.PostConstruct;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * &lt;ul&gt;
+ * &lt;li&gt;FastDfs 测试类&lt;/li&gt;
+ * &lt;li&gt;User: MuZhi Date:2015/10/22 &lt;/li&gt;
+ * &lt;/ul&gt;
+ */
+@Slf4j
+public class FDfsTest {
+
+    private static boolean status=false;
+
+    public static void main(String args[]){
+
+        FDfsTest FDfsTest = new FDfsTest();
+
+        FDfsTest.initDFS();
+
+        File uploadFile = new File(&quot;D:\\mysql.sql&quot;);
+
+        NameValuePair[] meta_list = new NameValuePair[]{new NameValuePair(&quot;author&quot;,&quot;shuzhen&quot;)};
+
+        try{
+
+            //上传
+            Map&lt;String, String&gt; resultMap = FDfsTest.uploadFile(uploadFile, meta_list);
+            for(String key:resultMap.keySet()){
+                log.info(resultMap.get(key));
+            }
+
+            //下载
+            int resultCode = FDfsTest.downloadFile(&quot;group1&quot;,&quot;M00/00/00/CgAVOVYoQnCACerzAAAIe8oQSSA496.sql&quot;,&quot;F://test.sql&quot;);
+            log.info(&quot;resultCode = {}&quot;,resultCode);
+
+        }catch (Exception e){
+            log.error(e.getMessage());
+        }
+    }
+
+    @PostConstruct
+    public void initDFS(){
+
+        if(status){
+            return;
+        }
+
+        InetSocketAddress[] tracker_servers = new InetSocketAddress[2];
+        tracker_servers[0] = new InetSocketAddress(&quot;10.0.21.56&quot;, 22122);
+        tracker_servers[1] = new InetSocketAddress(&quot;10.0.21.57&quot;, 22122);
+        TrackerGroup trackerGroup = new TrackerGroup(tracker_servers);
+
+        ClientGlobal.setG_tracker_group(trackerGroup);
+        ClientGlobal.setG_charset(&quot;UTF-8&quot;);
+        ClientGlobal.setG_secret_key(null);
+        ClientGlobal.setG_tracker_http_port(80);
+        ClientGlobal.setG_connect_timeout(1000 * 30);
+        ClientGlobal.setG_network_timeout(1000 * 60);
+
+    }
+
+    /**
+     * 上传文件到FastDFS服务器
+     *
+     * @param file           file
+     * @param meta_list      文件头信息，如宽度，大小，作者等
+     * @return               远程返回的文件名称和group名称
+     * @throws Exception
+     */
+    public Map&lt;String, String&gt; uploadFile(File file,NameValuePair[] meta_list) throws Exception {
+
+        initDFS();
+
+        Map&lt;String, String&gt; dfsMap = new HashMap&lt;&gt;();
+        FileInputStream fis = null;
+        double fileSize = file.length()/1024.0;
+        log.info(&quot;上传文件大小:{}KB&quot;,fileSize);
+
+        TrackerServer trackerServer = null;
+        try {
+            // 初始化连接
+            TrackerClient trackerClient = new TrackerClient();
+            trackerServer = trackerClient.getConnection();
+            StorageClient storageClient = new StorageClient(trackerServer, null);
+
+            byte[] file_buff = null;
+            try{
+                // 读取文件
+                fis = new FileInputStream(file);
+                int len = fis.available();
+                file_buff = new byte[len];
+                int result = fis.read(file_buff);
+                log.debug(&quot;fis.read result is :{}&quot;,result);
+
+            }catch (IOException e) {
+                log.error(e.getMessage(),e);
+                throw e;
+            }finally{
+                try {
+                    if (fis != null) {
+                        fis.close();
+                    }
+                } catch (Exception e) {
+                    log.error(&quot;文件流关闭异常:{}&quot;, e);
+                }
+            }
+
+            String extName = file.getName().substring(file.getName().lastIndexOf(&quot;.&quot;) + 1);     // 获取后缀名
+            String[] results = storageClient.upload_file(file_buff, extName, meta_list);        // 上传文件
+            if (results == null) {
+                log.error(&quot;FastDFS文件上传失败,文件名:{} Error Code:{}&quot;,file.getName(), storageClient.getErrorCode());
+                throw new Exception(&quot;FastDFS文件上传失败&quot;);
+            }
+
+            log.debug(&quot;FastDFS文件上传成功：{} &quot;, file.getAbsolutePath());
+            dfsMap.put(&quot;GROUP_NAME&quot;, results[0]);             // 远程返回的文件名称
+            dfsMap.put(&quot;REMOTE_FILE_NAME&quot;, results[1]);      // 文件的groupId
+
+        } catch (Exception e){
+            log.error(&quot;FastDFS文件上传异常：{},{}&quot;,e.getMessage(),e);
+        } finally {
+            closeDFSServer(trackerServer);
+        }
+        return dfsMap;
+    }
+
+    /**
+     * 下载文件
+     *
+     * @param groupName         下载组，默认为Group1
+     * @param remoteFilename    DFS上面的文件名
+     * @param localFileName     下载到本地的文件名
+     * @return  int             状态
+     */
+    public int downloadFile(String groupName, String remoteFilename, String localFileName) {
+
+        initDFS();
+
+        int result = -1;
+        TrackerServer trackerServer = null;
+        StorageClient storageClient = null;
+        try {
+            //初始化连接
+            TrackerClient trackerClient = new TrackerClient();
+            trackerServer = trackerClient.getConnection();
+            storageClient = new StorageClient(trackerServer,null);
+            //下载文件
+            groupName = StringUtils.isEmpty(groupName) ? &quot;group1&quot; : groupName;
+            result = storageClient.download_file(groupName, remoteFilename, localFileName);
+            log.info(&quot;文件下载成功！groupName:{} localFileName{}&quot;, groupName, localFileName);
+        } catch (Exception e) {
+            if(storageClient!=null)
+                log.error(&quot;文件上传失败！ errorCode:{},{}&quot;, storageClient.getErrorCode(), e);
+            else
+                log.error(&quot;文件上传失败！localFileName:{} storageClient return errorCode: null {}&quot;, localFileName, e);
+        } finally {
+            closeDFSServer(trackerServer);
+        }
+        return result;
+    }
+
+
+    /**
+     * 关闭Tracker 连接
+     *
+     * @param trackerServer trackerServer
+     */
+    public void closeTrackerServer(TrackerServer trackerServer) {
+        // 退出前,一定要将队列服务关闭
+        try {
+            if (trackerServer != null)
+                trackerServer.close();
+        } catch (Exception e) {
+            log.error(&quot;队列服务关闭异常&quot;, e);
+        }  finally {
+            status=false;
+        }
+    }
+
+    /**
+     * 关闭Tracker Storage 连接
+     *
+     * @param trackerServer 服务追踪者
+     */
+    public void  closeDFSServer(TrackerServer trackerServer){
+        try{
+            closeTrackerServer(trackerServer);
+        }catch (Exception ioe){
+            log.error(&quot;DFS关闭连接异常&quot;,ioe.getStackTrace());
+        } finally {
+            status=false;
+        }
+    }
+
+}</code></pre>
+
+
+</body>
+
+</html>
