@@ -1,1 +1,3 @@
-aaa=ddd
+spring:
+  cloud:
+    config: test content
