@@ -1,485 +1,726 @@
-<!DOCTYPE html><html>
-
-<head>
-<meta charset="utf-8">
-<title>README</title>
-<style type="text/css">
-body {
-  font-family: Helvetica, arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: white;
-  padding: 30px; }
-
-body > *:first-child {
-  margin-top: 0 !important; }
-body > *:last-child {
-  margin-bottom: 0 !important; }
-
-a {
-  color: #4183C4; }
-a.absent {
-  color: #cc0000; }
-a.anchor {
-  display: block;
-  padding-left: 30px;
-  margin-left: -30px;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0; }
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 20px 0 10px;
-  padding: 0;
-  font-weight: bold;
-  -webkit-font-smoothing: antialiased;
-  cursor: text;
-  position: relative; }
-
-h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
-  text-decoration: none; }
-
-h1 tt, h1 code {
-  font-size: inherit; }
-
-h2 tt, h2 code {
-  font-size: inherit; }
-
-h3 tt, h3 code {
-  font-size: inherit; }
-
-h4 tt, h4 code {
-  font-size: inherit; }
-
-h5 tt, h5 code {
-  font-size: inherit; }
-
-h6 tt, h6 code {
-  font-size: inherit; }
-
-h1 {
-  font-size: 28px;
-  color: black; }
-
-h2 {
-  font-size: 24px;
-  border-bottom: 1px solid #cccccc;
-  color: black; }
-
-h3 {
-  font-size: 18px; }
-
-h4 {
-  font-size: 16px; }
-
-h5 {
-  font-size: 14px; }
-
-h6 {
-  color: #777777;
-  font-size: 14px; }
-
-p, blockquote, ul, ol, dl, li, table, pre {
-  margin: 15px 0; }
-
-hr {
-  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
-  border: 0 none;
-  color: #cccccc;
-  height: 4px;
-  padding: 0;
-}
-
-body > h2:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-body > h1:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-  body > h1:first-child + h2 {
-    margin-top: 0;
-    padding-top: 0; }
-body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-
-a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
-  margin-top: 0;
-  padding-top: 0; }
-
-h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
-  margin-top: 0; }
-
-li p.first {
-  display: inline-block; }
-li {
-  margin: 0; }
-ul, ol {
-  padding-left: 30px; }
-
-ul :first-child, ol :first-child {
-  margin-top: 0; }
-
-dl {
-  padding: 0; }
-  dl dt {
-    font-size: 14px;
-    font-weight: bold;
-    font-style: italic;
-    padding: 0;
-    margin: 15px 0 5px; }
-    dl dt:first-child {
-      padding: 0; }
-    dl dt > :first-child {
-      margin-top: 0; }
-    dl dt > :last-child {
-      margin-bottom: 0; }
-  dl dd {
-    margin: 0 0 15px;
-    padding: 0 15px; }
-    dl dd > :first-child {
-      margin-top: 0; }
-    dl dd > :last-child {
-      margin-bottom: 0; }
-
-blockquote {
-  border-left: 4px solid #dddddd;
-  padding: 0 15px;
-  color: #777777; }
-  blockquote > :first-child {
-    margin-top: 0; }
-  blockquote > :last-child {
-    margin-bottom: 0; }
-
-table {
-  padding: 0;border-collapse: collapse; }
-  table tr {
-    border-top: 1px solid #cccccc;
-    background-color: white;
-    margin: 0;
-    padding: 0; }
-    table tr:nth-child(2n) {
-      background-color: #f8f8f8; }
-    table tr th {
-      font-weight: bold;
-      border: 1px solid #cccccc;
-      margin: 0;
-      padding: 6px 13px; }
-    table tr td {
-      border: 1px solid #cccccc;
-      margin: 0;
-      padding: 6px 13px; }
-    table tr th :first-child, table tr td :first-child {
-      margin-top: 0; }
-    table tr th :last-child, table tr td :last-child {
-      margin-bottom: 0; }
-
-img {
-  max-width: 100%; }
-
-span.frame {
-  display: block;
-  overflow: hidden; }
-  span.frame > span {
-    border: 1px solid #dddddd;
-    display: block;
-    float: left;
-    overflow: hidden;
-    margin: 13px 0 0;
-    padding: 7px;
-    width: auto; }
-  span.frame span img {
-    display: block;
-    float: left; }
-  span.frame span span {
-    clear: both;
-    color: #333333;
-    display: block;
-    padding: 5px 0 0; }
-span.align-center {
-  display: block;
-  overflow: hidden;
-  clear: both; }
-  span.align-center > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px auto 0;
-    text-align: center; }
-  span.align-center span img {
-    margin: 0 auto;
-    text-align: center; }
-span.align-right {
-  display: block;
-  overflow: hidden;
-  clear: both; }
-  span.align-right > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px 0 0;
-    text-align: right; }
-  span.align-right span img {
-    margin: 0;
-    text-align: right; }
-span.float-left {
-  display: block;
-  margin-right: 13px;
-  overflow: hidden;
-  float: left; }
-  span.float-left span {
-    margin: 13px 0 0; }
-span.float-right {
-  display: block;
-  margin-left: 13px;
-  overflow: hidden;
-  float: right; }
-  span.float-right > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px auto 0;
-    text-align: right; }
-
-code, tt {
-  margin: 0 2px;
-  padding: 0 5px;
-  white-space: nowrap;
-  border: 1px solid #eaeaea;
-  background-color: #f8f8f8;
-  border-radius: 3px; }
-
-pre code {
-  margin: 0;
-  padding: 0;
-  white-space: pre;
-  border: none;
-  background: transparent; }
-
-.highlight pre {
-  background-color: #f8f8f8;
-  border: 1px solid #cccccc;
-  font-size: 13px;
-  line-height: 19px;
-  overflow: auto;
-  padding: 6px 10px;
-  border-radius: 3px; }
-
-pre {
-  background-color: #f8f8f8;
-  border: 1px solid #cccccc;
-  font-size: 13px;
-  line-height: 19px;
-  overflow: auto;
-  padding: 6px 10px;
-  border-radius: 3px; }
-  pre code, pre tt {
-    background-color: transparent;
-    border: none; }
-
-sup {
-    font-size: 0.83em;
-    vertical-align: super;
-    line-height: 0;
-}
-* {
-	-webkit-print-color-adjust: exact;
-}
-@media screen and (min-width: 914px) {
-    body {
-        width: 854px;
-        margin:0 auto;
-    }
-}
-@media print {
-	table, pre {
-		page-break-inside: avoid;
-	}
-	pre {
-		word-wrap: break-word;
-	}
-}
-</style>
-</head>
-<body>
-<h1 id="toc_0">Dsequence分布式序列服务</h1>
-
-<h3 id="toc_1">快速介绍</h3>
-
-<p>Dsequence 是一个基于java 的<strong>轻量级的分布式序列服务</strong>，为业务系统提供序列号生成服务。具有分布式，高可用，高性能，低侵入等特点。这是一个纯java 编写的序列服务，类似数据库的自增长主键，但其并不是直接使用了mysql 的自增长ID而实现，只是使用MySQL作为持久，且其对数据库的压力几乎可以忽略（亿级序列）。我之所以设计该项目最主要的原因是因为在一个核心的分布式系统中使用MySQL数据库做批量插入（主键为自增长ID）时，造成锁表等待。使用该服务后数据库批量插入再无锁等待,同时该项目也可适用到其它业务系统中。</p>
-
-<h3 id="toc_2">核心原理</h3>
-
-<p>业务系统（客户端）每次来获取序列时并不是每次获取一个而是一批，然后放到本地缓冲区队列（队列长度10000），同时业务系统（客户端）会创建一个异步线程扫描队列长度，当本地缓冲区队列中的序列数小于本地缓冲区队列长度的80%时，会启动序列饥饿机制（异步填充本地缓冲区队列直至本地缓冲区队列值满）。</p>
-
-<p>服务中的队列是持久化的，每个序列都持久化在底层数据库（MySQL）中，每个序列服务节点启动时会<strong>事先准备一个批次的序列放在缓冲区</strong>，这个批次的大小等于本地缓冲区队列的十倍（100000）。同样当服务端缓冲区的序列少于队列的80%时，服务端会启动饥饿模式填充缓冲区队列中的序列。</p>
-
-<h3 id="toc_3">数据结构</h3>
-
-<table>
-<thead>
-<tr>
-<th>应用名称</th>
-<th>序列名称</th>
-<th>上次使用</th>
-<th>下次使用</th>
-<th>最大序列</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>App-01</td>
-<td>Seq-01</td>
-<td>1</td>
-<td>10001</td>
-<td>99999999999999999</td>
-</tr>
-<tr>
-<td>App-01</td>
-<td>Seq-02</td>
-<td>2000</td>
-<td>30001</td>
-<td>99999999999999999</td>
-</tr>
-<tr>
-<td>App-02</td>
-<td>Seq-01</td>
-<td>1</td>
-<td>10001</td>
-<td>99999999999999999</td>
-</tr>
-<tr>
-<td>App-02</td>
-<td>Seq-02</td>
-<td>1001</td>
-<td>20001</td>
-<td>99999999999999999</td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="toc_4">界面</h3>
-
-<h4 id="toc_5">管理界面</h4>
-
-<p><img src="https://raw.githubusercontent.com/chinazhen/images/master/jiemian.png" alt="Reset 界面"></p>
-
-<ul>
-<li>创建序列</li>
-<li>删除序列</li>
-<li>获取序列</li>
-<li>查询序列</li>
-</ul>
-
-<h4 id="toc_6">创建序列</h4>
-
-<p><img src="https://raw.githubusercontent.com/chinazhen/images/master/create.png" alt="Reset 界面"></p>
-
-<ul>
-<li>可直接在业务系统中使用获取序列方式创建序列（后面介绍）。</li>
-<li>也可提前在服务端界面创建序列。</li>
-</ul>
-
-<h4 id="toc_7">删除序列</h4>
-
-<p><img src="https://raw.githubusercontent.com/chinazhen/images/master/delete.png" alt="Reset 界面"></p>
-
-<ul>
-<li>删除已创建序列（不可恢复）</li>
-</ul>
-
-<h4 id="toc_8">获取序列</h4>
-
-<p><img src="https://raw.githubusercontent.com/chinazhen/images/master/get.png" alt="Reset 界面"></p>
-
-<ul>
-<li>获取指定序列（批次方式）</li>
-</ul>
-
-<h4 id="toc_9">获取序列</h4>
-
-<p><img src="https://raw.githubusercontent.com/chinazhen/images/master/query.png" alt="Reset 界面"></p>
-
-<ul>
-<li>查询/获取某个业务系统中的所有/指定序列信息</li>
-</ul>
-
-<h3 id="toc_10">项目部署</h3>
-
-<ul>
-<li>下载源码 git clone <a href="https://github.com/chinazhen/dsequence.git">https://github.com/chinazhen/dsequence.git</a> </li>
-<li>创建数据库及表修改数据库配置。数据库配置在dsequence/dsequence-server/src/main/resources/properties/（各个环境 maven profile选择） ，MySQL数据库建表脚本在 dsequence/dsequence-server/src/main/resources/scripts/database.sql，</li>
-<li>编译源码,进入项目目录 mvn clean package</li>
-<li>运行项目 进入 desequence-server/target目录，执行 java -jar dsequence.jar 或 找到源码 com.github.dsequence.server.Application 运行main方法。</li>
-<li>打开浏览器访问 <a href="http://127.0.0.1:9099/dsequence/swagger/index.html">http://127.0.0.1:9099/dsequence/swagger/index.html</a></li>
-</ul>
-
-<p>PS : 项目jdk 版本为1.8，项目使用lombok插件，idea源码编译时请 <a href="http://blog.csdn.net/zw235345721/article/details/50737549">安装lombok插件</a>。</p>
-
-<h3 id="toc_11">Java Client Example</h3>
-
-<ul>
-<li><p>Maven pom</p>
-
-<pre><code class="language-none">&lt;dependency&gt;
-    &lt;groupId&gt;com.github.dsequence&lt;/groupId&gt;
-    &lt;artifactId&gt;dsequence-client&lt;/artifactId&gt;
-    &lt;version&gt;1.1-SNAPSHOT&lt;/version&gt;
-&lt;/dependency&gt;</code></pre></li>
-<li><p>Java code</p>
-
-<pre><code class="language-none">package ...
-
-import ...
-
-import com.github.dsequence.client.SequenceFactory;
-import lombok.extern.slf4j.Slf4j;
-import java.util.Objects;
-
-/**
-* 收支明细ID序列号生成
-*
-* @author talentshu@163.com
-* @version 1.0.0 createTime: 17/4/23
-*/
-@Slf4j
-public final class BalDetailIDProducer {
-
-    private final static String appName = &quot;ACCOUNT&quot;;
-
-    private final static String seqName = &quot;BAL_DETAIL_ID&quot;;
-
-    public static Long getSequence() {
-        long startTime = System.currentTimeMillis();
-        Long sequence = SequenceFactory.getInstance(
-                Configuration.getString(&quot;sequence.server&quot;)).getSequence(appName,seqName);
-        startTime = System.currentTimeMillis() - startTime;
-        if (startTime &gt;= 200) {
-            log.warn(&quot;收支明细ID序列号生成, sequence:{}, 耗时:{}&quot;, sequence, startTime);
-        }
-        if (Objects.isNull(sequence)) {
-            throw new AccountException(BizErrorCode.GET_SEQUENCE_ERROR,&quot;获取余额明细ID为空&quot;);
-        }
-        return sequence;
-    }
-
-}</code></pre></li>
-</ul>
-
-<h3 id="toc_12">讨论及建议</h3>
-
-<ul>
-<li>邮箱：talentshu@163.com</li>
-</ul>
-
-<h3 id="toc_13">支持与鼓励</h3>
-
-<p><img src="https://raw.githubusercontent.com/chinazhen/images/master/IMG_0216.JPG" alt="微信"></p>
-
-
-</body>
-
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+    <head>
+    	<!-- meta charec set -->
+        <meta charset="utf-8">
+		<!-- Always force latest IE rendering engine or request Chrome Frame -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<!-- Page Title -->
+        <title>博客之王-舒蓁的博客</title>		
+		<!-- Meta Description -->
+        <meta name="description" content="Blue One Page Creative HTML5 Template">
+        <meta name="keywords" content="one page, single page, onepage, responsive, parallax, creative, business, html5, css3, css3 animation">
+        <meta name="author" content="Muhammad Morshed">
+		<!-- Mobile Specific Meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!-- Google Font -->
+		
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+		<!-- CSS
+		================================================== -->
+		<!-- Fontawesome Icon font -->
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+		<!-- Twitter Bootstrap css -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+		<!-- jquery.fancybox  -->
+        <link rel="stylesheet" href="css/jquery.fancybox.css">
+		<!-- animate -->
+        <link rel="stylesheet" href="css/animate.css">
+		<!-- Main Stylesheet -->
+        <link rel="stylesheet" href="css/main.css">
+		<!-- media-queries -->
+        <link rel="stylesheet" href="css/media-queries.css">
+
+		<!-- Modernizer Script for old Browsers -->
+        <script src="js/modernizr-2.6.2.min.js"></script>
+
+    </head>
+	
+    <body id="body">
+	
+		<!-- preloader -->
+		<div id="preloader">
+			<img src="img/preloader.gif" alt="Preloader">
+		</div>
+		<!-- end preloader -->
+
+        <!-- 
+        Fixed Navigation
+        ==================================== -->
+        <header id="navigation" class="navbar-fixed-top navbar">
+            <div class="container">
+                <div class="navbar-header">
+                    <!-- responsive nav button -->
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-bars fa-2x"></i>
+                    </button>
+					<!-- /responsive nav button -->
+					
+					<!-- logo -->
+                    <a class="navbar-brand" href="#body">
+						<h1 id="logo">
+							<img src="img/logo.png" alt="Brandi">
+						</h1>
+					</a>
+					<!-- /logo -->
+                </div>
+
+				<!-- main nav -->
+                <nav class="collapse navbar-collapse navbar-right" role="navigation">
+                    <ul id="nav" class="nav navbar-nav">
+                        <li class="current"><a href="#body">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#works">Work</a></li>
+                        <li><a href="#team">Team</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+				<!-- /main nav -->
+				
+            </div>
+        </header>
+        <!--
+        End Fixed Navigation
+        ==================================== -->
+		
+		
+		
+        <!--
+        Home Slider
+        ==================================== -->
+		
+		<section id="slider">
+			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+			
+				<!-- Indicators bullet -->
+				<ol class="carousel-indicators">
+					<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+					<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+				</ol>
+				<!-- End Indicators bullet -->				
+				
+				<!-- Wrapper for slides -->
+				<div class="carousel-inner" role="listbox">
+					
+					<!-- single slide -->
+					<div class="item active" style="background-image: url(img/banner.jpg);">
+						<div class="carousel-caption">
+							<h2 data-wow-duration="700ms" data-wow-delay="500ms" class="wow bounceInDown animated">Meet<span> Brandi</span>!</h2>
+							<h3 data-wow-duration="1000ms" class="wow slideInLeft animated"><span class="color">/creative</span> one page template.</h3>
+							<p data-wow-duration="1000ms" class="wow slideInRight animated">We are a team of professionals</p>
+							
+							<ul class="social-links text-center">
+								<li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
+								<li><a href=""><i class="fa fa-facebook fa-lg"></i></a></li>
+								<li><a href=""><i class="fa fa-google-plus fa-lg"></i></a></li>
+								<li><a href=""><i class="fa fa-dribbble fa-lg"></i></a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- end single slide -->
+					
+					<!-- single slide -->
+					<div class="item" style="background-image: url(img/banner.jpg);">
+						<div class="carousel-caption">
+							<h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated">Meet<span> Team</span>!</h2>
+							<h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color">/creative</span> one page template.</h3>
+							<p data-wow-duration="500ms" class="wow slideInRight animated">We are a team of professionals</p>
+							
+							<ul class="social-links text-center">
+								<li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
+								<li><a href=""><i class="fa fa-facebook fa-lg"></i></a></li>
+								<li><a href=""><i class="fa fa-google-plus fa-lg"></i></a></li>
+								<li><a href=""><i class="fa fa-dribbble fa-lg"></i></a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- end single slide -->
+					
+				</div>
+				<!-- End Wrapper for slides -->
+				
+			</div>
+		</section>
+		
+        <!--
+        End Home SliderEnd
+        ==================================== -->
+		
+        <!--
+        Features
+        ==================================== -->
+		
+		<section id="features" class="features">
+			<div class="container">
+				<div class="row">
+				
+					<div class="sec-title text-center mb50 wow bounceInDown animated" data-wow-duration="500ms">
+						<h2>Features</h2>
+						<div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
+					</div>
+
+					<!-- service item -->
+					<div class="col-md-4 wow fadeInLeft" data-wow-duration="500ms">
+						<div class="service-item">
+							<div class="service-icon">
+								<i class="fa fa-github fa-2x"></i>
+							</div>
+							
+							<div class="service-desc">
+								<h3>Branding</h3>
+								<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore</p>
+							</div>
+						</div>
+					</div>
+					<!-- end service item -->
+					
+					<!-- service item -->
+					<div class="col-md-4 wow fadeInUp" data-wow-duration="500ms" data-wow-delay="500ms">
+						<div class="service-item">
+							<div class="service-icon">
+								<i class="fa fa-pencil fa-2x"></i>
+							</div>
+							
+							<div class="service-desc">
+								<h3>Development</h3>
+								<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore</p>
+							</div>
+						</div>
+					</div>
+					<!-- end service item -->
+					
+					<!-- service item -->
+					<div class="col-md-4 wow fadeInRight" data-wow-duration="500ms"  data-wow-delay="900ms">
+						<div class="service-item">
+							<div class="service-icon">
+								<i class="fa fa-bullhorn fa-2x"></i>
+							</div>
+							
+							<div class="service-desc">
+								<h3>Consulting</h3>
+								<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore</p>
+							</div>
+						</div>
+					</div>
+					<!-- end service item -->
+						
+				</div>
+			</div>
+		</section>
+		
+        <!--
+        End Features
+        ==================================== -->
+		
+		
+        <!--
+        Our Works
+        ==================================== -->
+		
+		<section id="works" class="works clearfix">
+			<div class="container">
+				<div class="row">
+				
+					<div class="sec-title text-center">
+						<h2>Works</h2>
+						<div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
+					</div>
+					
+					<div class="sec-sub-title text-center">
+						<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore</p>
+					</div>
+					
+					<div class="work-filter wow fadeInRight animated" data-wow-duration="500ms">
+						<ul class="text-center">
+							<li><a href="javascript:;" data-filter="all" class="active filter">All</a></li>
+							<li><a href="javascript:;" data-filter=".branding" class="filter">Branding</a></li>
+							<li><a href="javascript:;" data-filter=".web" class="filter">web</a></li>
+							<li><a href="javascript:;" data-filter=".logo-design" class="filter">logo design</a></li>
+							<li><a href="javascript:;" data-filter=".photography" class="filter">photography</a></li>
+						</ul>
+					</div>
+					
+				</div>
+			</div>
+			
+			<div class="project-wrapper">
+			
+				<figure class="mix work-item branding">
+					<img src="img/works/item-1.jpg" alt="">
+					<figcaption class="overlay">
+						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/item-1.jpg"><i class="fa fa-eye fa-lg"></i></a>
+						<h4>Labore et dolore magnam</h4>
+						<p>Photography</p>
+					</figcaption>
+				</figure>
+				
+				<figure class="mix work-item web">
+					<img src="img/works/item-2.jpg" alt="">
+					<figcaption class="overlay">
+						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/item-2.jpg"><i class="fa fa-eye fa-lg"></i></a>
+						<h4>Labore et dolore magnam</h4>
+						<p>Photography</p>
+					</figcaption>
+				</figure>
+				
+				<figure class="mix work-item logo-design">
+					<img src="img/works/item-3.jpg" alt="">
+					<figcaption class="overlay">
+						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/item-3.jpg"><i class="fa fa-eye fa-lg"></i></a>
+						<h4>Labore et dolore magnam</h4>
+						<p>Photography</p>
+					</figcaption>
+				</figure>
+				
+				<figure class="mix work-item photography">
+					<img src="img/works/item-4.jpg" alt="">
+					<figcaption class="overlay">
+						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/item-4.jpg"><i class="fa fa-eye fa-lg"></i></a>
+						<h4>Labore et dolore magnam</h4>
+						<p>Photography</p>
+					</figcaption>
+				</figure>
+			
+				<figure class="mix work-item branding">
+					<img src="img/works/item-5.jpg" alt="">
+					<figcaption class="overlay">
+						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/item-5.jpg"><i class="fa fa-eye fa-lg"></i></a>
+						<h4>Labore et dolore magnam</h4>
+						<p>Photography</p>
+					</figcaption>
+				</figure>
+				
+				<figure class="mix work-item web">
+					<img src="img/works/item-6.jpg" alt="">
+					<figcaption class="overlay">
+						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/item-6.jpg"><i class="fa fa-eye fa-lg"></i></a>
+						<h4>Labore et dolore magnam</h4>
+						<p>Photography</p>
+					</figcaption>
+				</figure>
+				
+				<figure class="mix work-item logo-design">
+					<img src="img/works/item-7.jpg" alt="">
+					<figcaption class="overlay">
+						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/item-7.jpg"><i class="fa fa-eye fa-lg"></i></a>
+						<h4>Labore et dolore magnam</h4>
+						<p>Photography</p>
+					</figcaption>
+				</figure>
+				
+				<figure class="mix work-item photography">
+					<img src="img/works/item-8.jpg" alt="">
+					<figcaption class="overlay">
+						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/item-8.jpg"><i class="fa fa-eye fa-lg"></i></a>
+						<h4>Labore et dolore magnam</h4>
+						<p>Photography</p>
+					</figcaption>
+				</figure>
+				
+			</div>
+		
+
+		</section>
+        <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
+		
+        <!--
+        End Our Works
+        ==================================== -->
+		
+        <!--
+        Meet Our Team
+        ==================================== -->		
+		
+		<section id="team" class="team">
+			<div class="container">
+				<div class="row">
+		
+					<div class="sec-title text-center wow fadeInUp animated" data-wow-duration="700ms">
+						<h2>Meet Our Team</h2>
+						<div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
+					</div>
+					
+					<div class="sec-sub-title text-center wow fadeInRight animated" data-wow-duration="500ms">
+						<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore</p>
+					</div>
+
+					<!-- single member -->
+					<figure class="team-member col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
+						<div class="member-thumb">
+							<img src="img/team/member-1.png" alt="Team Member" class="img-responsive">
+							<figcaption class="overlay">
+								<h5>voluptatem quia voluptas </h5>
+								<p>sit aspernatur aut odit aut fugit,</p>
+								<ul class="social-links text-center">
+									<li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
+									<li><a href=""><i class="fa fa-facebook fa-lg"></i></a></li>
+									<li><a href=""><i class="fa fa-google-plus fa-lg"></i></a></li>
+								</ul>
+							</figcaption>
+						</div>
+						<h4>John Filmr Doe</h4>
+						<span>Managing Director</span>
+					</figure>
+					<!-- end single member -->
+					
+					<!-- single member -->
+					<figure class="team-member col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
+						<div class="member-thumb">
+							<img src="img/team/member-2.png" alt="Team Member" class="img-responsive">
+							<figcaption class="overlay">
+								<h5>voluptatem quia voluptas </h5>
+								<p>sit aspernatur aut odit aut fugit,</p>
+								<ul class="social-links text-center">
+									<li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
+									<li><a href=""><i class="fa fa-facebook fa-lg"></i></a></li>
+									<li><a href=""><i class="fa fa-google-plus fa-lg"></i></a></li>
+								</ul>
+							</figcaption>
+						</div>
+						<h4>Martin Matrone</h4>
+						<span>Lead Developer</span>
+					</figure>
+					<!-- end single member -->
+					
+					<!-- single member -->
+					<figure class="team-member col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="600ms">
+						<div class="member-thumb">
+							<img src="img/team/member-3.png" alt="Team Member" class="img-responsive">
+							<figcaption class="overlay">
+								<h5>voluptatem quia voluptas </h5>
+								<p>sit aspernatur aut odit aut fugit,</p>
+								<ul class="social-links text-center">
+									<li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
+									<li><a href=""><i class="fa fa-facebook fa-lg"></i></a></li>
+									<li><a href=""><i class="fa fa-google-plus fa-lg"></i></a></li>
+								</ul>
+							</figcaption>
+						</div>
+						<h4>Steve Flaulkin</h4>
+						<span>Sr. UI Designer</span>
+					</figure>
+					<!-- end single member -->
+					
+					<!-- single member -->
+					<figure class="team-member col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="900ms">
+						<div class="member-thumb">
+							<img src="img/team/member-1.png" alt="Team Member" class="img-responsive">
+							<figcaption class="overlay">
+								<h5>voluptatem quia voluptas </h5>
+								<p>sit aspernatur aut odit aut fugit,</p>
+								<ul class="social-links text-center">
+									<li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
+									<li><a href=""><i class="fa fa-facebook fa-lg"></i></a></li>
+									<li><a href=""><i class="fa fa-google-plus fa-lg"></i></a></li>
+								</ul>
+							</figcaption>
+						</div>
+						<h4>John Filmr Doe</h4>
+						<span>Managing Director</span>
+					</figure>
+					<!-- end single member -->
+					
+				</div>
+			</div>
+		</section>
+		
+        <!--
+        End Meet Our Team
+        ==================================== -->
+		
+		<!--
+        Some fun facts
+        ==================================== -->		
+		
+		<section id="facts" class="facts">
+			<div class="parallax-overlay">
+				<div class="container">
+					<div class="row number-counters">
+						
+						<div class="sec-title text-center mb50 wow rubberBand animated" data-wow-duration="1000ms">
+							<h2>Some Fun Facts</h2>
+							<div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
+						</div>
+						
+						<!-- first count item -->
+						<div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
+							<div class="counters-item">
+								<i class="fa fa-clock-o fa-3x"></i>
+								<strong data-to="3200">0</strong>
+								<!-- Set Your Number here. i,e. data-to="56" -->
+								<p>Hours of Work</p>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
+							<div class="counters-item">
+								<i class="fa fa-users fa-3x"></i>
+								<strong data-to="120">0</strong>
+								<!-- Set Your Number here. i,e. data-to="56" -->
+								<p>Satisfied Clients</p>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="600ms">
+							<div class="counters-item">
+								<i class="fa fa-rocket fa-3x"></i>
+								<strong data-to="360">0</strong>
+								<!-- Set Your Number here. i,e. data-to="56" -->
+								<p> Projects Delivered </p>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="900ms">
+							<div class="counters-item">
+								<i class="fa fa-trophy fa-3x"></i>
+								<strong data-to="6454">0</strong>
+								<!-- Set Your Number here. i,e. data-to="56" -->
+								<p>Awards Won</p>
+							</div>
+						</div>
+						<!-- end first count item -->
+				
+					</div>
+				</div>
+			</div>
+		</section>
+		
+        <!--
+        End Some fun facts
+        ==================================== -->
+		
+		
+		<!--
+        Contact Us
+        ==================================== -->		
+		
+		<section id="contact" class="contact">
+			<div class="container">
+				<div class="row mb50">
+				
+					<div class="sec-title text-center mb50 wow fadeInDown animated" data-wow-duration="500ms">
+						<h2>Let’s Discuss</h2>
+						<div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
+					</div>
+					
+					<div class="sec-sub-title text-center wow rubberBand animated" data-wow-duration="1000ms">
+						<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore</p>
+					</div>
+					
+					<!-- contact address -->
+					<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 wow fadeInLeft animated" data-wow-duration="500ms">
+						<div class="contact-address">
+							<h3>Cras at ultrices erat, sed vulputate!</h3>
+							<p>2345 Setwant natrer, 1234,</p>
+							<p>Washington. United States.</p>
+							<p>(401) 1234 567</p>
+						</div>
+					</div>
+					<!-- end contact address -->
+					
+					<!-- contact form -->
+					<div class="col-lg-8 col-md-8 col-sm-7 col-xs-12 wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="300ms">
+						<div class="contact-form">
+							<h3>Say hello!</h3>
+							<form action="#" id="contact-form">
+								<div class="input-group name-email">
+									<div class="input-field">
+										<input type="text" name="name" id="name" placeholder="Name" class="form-control">
+									</div>
+									<div class="input-field">
+										<input type="email" name="email" id="email" placeholder="Email" class="form-control">
+									</div>
+								</div>
+								<div class="input-group">
+									<textarea name="message" id="message" placeholder="Message" class="form-control"></textarea>
+								</div>
+								<div class="input-group">
+									<input type="submit" id="form-submit" class="pull-right" value="Send message">
+								</div>
+							</form>
+						</div>
+					</div>
+					<!-- end contact form -->
+					
+					<!-- footer social links -->
+					<div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 wow fadeInRight animated" data-wow-duration="500ms" data-wow-delay="600ms">
+						<ul class="footer-social">
+							<li><a href="#Themefisher"><i class="fa fa-behance fa-2x"></i></a></li>
+							<li><a href="#/Themefisher"><i class="fa fa-twitter fa-2x"></i></a></li>
+							<li><a href="#/themefisher"><i class="fa fa-dribbble fa-2x"></i></a></li>
+							<li><a href="#/Themefisher"><i class="fa fa-facebook fa-2x"></i></a></li>
+						</ul>
+					</div>
+					<!-- end footer social links -->
+					
+				</div>
+			</div>
+			
+			
+			
+		</section>
+		
+        <!--
+        End Contact Us
+        ==================================== -->
+		
+		
+		<footer id="footer" class="footer">
+			<div class="container">
+				<div class="row">
+				
+					<div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms">
+						<div class="footer-single">
+							<img src="img/footer-logo.png" alt="">
+							<p>eusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+						</div>
+					</div>
+				
+					<div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
+						<div class="footer-single">
+							<h6>Subscribe </h6>
+							<form action="#" class="subscribe">
+								<input type="text" name="subscribe" id="subscribe">
+								<input type="submit" value="&#8594;" id="subs">
+							</form>
+							<p>eusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+						</div>
+					</div>
+				
+					<div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="600ms">
+						<div class="footer-single">
+							<h6>Explore</h6>
+							<ul>
+								<li><a href="#">Inside Us</a></li>
+								<li><a href="#">Flickr</a></li>
+								<li><a href="#">Google</a></li>
+								<li><a href="#">Forum</a></li>
+							</ul>
+						</div>
+					</div>
+				
+					<div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="900ms">
+						<div class="footer-single">
+							<h6>Support</h6>
+							<ul>
+								<li><a href="#">Contact Us</a></li>
+								<li><a href="#">Market Blog</a></li>
+								<li><a href="#">Help Center</a></li>
+								<li><a href="#">Pressroom</a></li>
+							</ul>
+						</div>
+					</div>
+					
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<p class="copyright text-center">
+							Copyright © 2017  All rights reserved. Designed & developed by 
+						</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+		
+		<a href="javascript:void(0);" id="back-top"><i class="fa fa-angle-up fa-3x"></i></a>
+
+		<!-- Essential jQuery Plugins
+		================================================== -->
+		<!-- Main jQuery -->
+        <script src="js/jquery-1.11.1.min.js"></script>
+		<!-- Single Page Nav -->
+        <script src="js/jquery.singlePageNav.min.js"></script>
+		<!-- Twitter Bootstrap -->
+        <script src="js/bootstrap.min.js"></script>
+		<!-- jquery.fancybox.pack -->
+        <script src="js/jquery.fancybox.pack.js"></script>
+		<!-- jquery.mixitup.min -->
+        <script src="js/jquery.mixitup.min.js"></script>
+		<!-- jquery.parallax -->
+        <script src="js/jquery.parallax-1.1.3.js"></script>
+		<!-- jquery.countTo -->
+        <script src="js/jquery-countTo.js"></script>
+		<!-- jquery.appear -->
+        <script src="js/jquery.appear.js"></script>
+		<!-- Contact form validation -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.32/jquery.form.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"></script>
+		<!-- jquery easing -->
+        <script src="js/jquery.easing.min.js"></script>
+		<!-- jquery easing -->
+        <script src="js/wow.min.js"></script>
+		<script>
+			var wow = new WOW ({
+				boxClass:     'wow',      // animated element css class (default is wow)
+				animateClass: 'animated', // animation css class (default is animated)
+				offset:       120,          // distance to the element when triggering the animation (default is 0)
+				mobile:       false,       // trigger animations on mobile devices (default is true)
+				live:         true        // act on asynchronously loaded content (default is true)
+			  }
+			);
+			wow.init();
+		</script> 
+		<!-- Custom Functions -->
+        <script src="js/custom.js"></script>
+		
+		<script type="text/javascript">
+			$(function(){
+				/* ========================================================================= */
+				/*	Contact Form
+				/* ========================================================================= */
+				
+				$('#contact-form').validate({
+					rules: {
+						name: {
+							required: true,
+							minlength: 2
+						},
+						email: {
+							required: true,
+							email: true
+						},
+						message: {
+							required: true
+						}
+					},
+					messages: {
+						name: {
+							required: "come on, you have a name don't you?",
+							minlength: "your name must consist of at least 2 characters"
+						},
+						email: {
+							required: "no email, no message"
+						},
+						message: {
+							required: "um...yea, you have to write something to send this form.",
+							minlength: "thats all? really?"
+						}
+					},
+					submitHandler: function(form) {
+						$(form).ajaxSubmit({
+							type:"POST",
+							data: $(form).serialize(),
+							url:"process.php",
+							success: function() {
+								$('#contact-form :input').attr('disabled', 'disabled');
+								$('#contact-form').fadeTo( "slow", 0.15, function() {
+									$(this).find(':input').attr('disabled', 'disabled');
+									$(this).find('label').css('cursor','default');
+									$('#success').fadeIn();
+								});
+							},
+							error: function() {
+								$('#contact-form').fadeTo( "slow", 0.15, function() {
+									$('#error').fadeIn();
+								});
+							}
+						});
+					}
+				});
+			});
+		</script>
+    </body>
 </html>
