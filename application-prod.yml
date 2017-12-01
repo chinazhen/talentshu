@@ -1,3 +1,0 @@
-spring:
-  cloud:
-    config: test content
