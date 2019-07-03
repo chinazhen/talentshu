@@ -89,7 +89,7 @@ function runTime() {
 function initStyle() {
     var label = document.getElementsByClassName('label');
     for (var i = 0; i < label.length; i++) {
-        label[i].style.color = '#f6e66a';
+        label[i].style.color = '#ffe599';
     }
 }
 function changePosition() {
