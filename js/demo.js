@@ -93,10 +93,10 @@ function initStyle() {
     }
 }
 function changePosition() {
-    for (var i = 0; i < textSet.length; i++) {
-        for (var j = 0; j < textSet[i][1].length; j++) {
-            var tempX = textSet[i][1][j].offsetLeft + "px";
-            var tempY = textSet[i][1][j].offsetTop + "px";
+    for (let i = 0; i < textSet.length; i++) {
+        for (let j = 0; j < textSet[i][1].length; j++) {
+            let tempX = textSet[i][1][j].offsetLeft + "px";
+            let tempY = textSet[i][1][j].offsetTop + "px";
             setTimeout(function() {
                 textSet[i][1][j].style.position = "absolute";
                 textSet[i][1][j].style.left = tempX;
