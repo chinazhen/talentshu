@@ -56,18 +56,18 @@ function runTime() {
     var seconds = now.getSeconds();
     var shiChen = 1;
 
-    for (var i = 1; i <= scMap.length; i ++) {
-        if(hour < scMap[i][1] && hour >= scMap[i][0]) {
-            shiChen = i;
+    for (var n = 1; n <= scMap.length; n ++) {
+        if(hour < scMap[n][1] && hour >= scMap[n][0]) {
+            shiChen = n;
             break;
         }
     }
 
     initStyle();
     var nowValue = [month, day - 1, week, shiChen, hour, minute, seconds];
-    for (var i = 0; i < nowValue.length; i++) {
-        var num = nowValue[i];
-        textSet[i][1][num].style.color = '#fff';
+    for (var m = 0; m < nowValue.length; m++) {
+        var num = nowValue[m];
+        textSet[m][1][num].style.color = '#fff';
     }
     if (isCircle) {
         var widthMid = document.body.clientWidth / 2;
