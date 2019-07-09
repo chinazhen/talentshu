@@ -18,7 +18,28 @@ html,body{
     color:#4d4d4d;
     text-align:center;
     padding:0 2px;
-    font-size:12px;
+    font-size:18px;
     transition:left 1s,top 1s;
     transform-origin:0% 0%
+}
+.label1{
+    font-size:5px;
+}
+.label2{
+    font-size:8px;
+}
+.label3{
+    font-size:8px;
+}
+.label4{
+    font-size:8px;
+}
+.label5{
+    font-size:8px;
+}
+.label6{
+    font-size:8px;
+}
+.label7{
+    font-size:8px;
 }
