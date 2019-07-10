@@ -145,9 +145,8 @@ function runTime() {
     }
 
     if (isCircle) {
-        var widthMid = document.body.clientWidth / 2;
-        var heightMid = document.body.clientHeight / 2;
-        var s = 25;
+        var widthMid = 350;
+        var heightMid = 165;
         for (var i = 0; i < textSet.length; i++) {
             for (var j = 0; j < textSet[i][0].length; j++) {
                 var r = 0;
@@ -155,19 +154,19 @@ function runTime() {
                     case 0:
                         r = 0; break;
                     case 1:
-                        r = 70; break;
+                        r = 35; break;
                     case 2:
-                        r = 100; break;
+                        r = 60; break;
                     case 3:
-                        r = 140; break;
+                        r = 80; break;
                     case 4:
-                        r = 175; break;
+                        r = 110; break;
                     case 5:
-                        r = 220; break;
+                        r = 140; break;
                     case 6:
-                        r = 260; break;
+                        r = 175; break;
                     case 7:
-                        r = 295; break;
+                        r = 205; break;
                 }
 
                 var deg = 360 / textSet[i][1].length * (j - nowValue[i]);
@@ -198,16 +197,16 @@ function initStyle() {
             label[i].style.color = '#FFD700';
         }
         if (clz === "label5") {
-            label[i].style.color = '#F4A460';
+            label[i].style.color = '#FFA500';
         }
         if (clz === "label4") {
-            label[i].style.color = '#FFA07A';
+            label[i].style.color = '#FFD700';
         }
         if (clz === "label3") {
-            label[i].style.color = '#BC8F8F';
+            label[i].style.color = '#FFA500';
         }
         if (clz === "label2") {
-            label[i].style.color = '#FFDEAD';
+            label[i].style.color = '#FFD700';
         }
         if (clz === "label1") {
             label[i].style.color = '#FFA500';

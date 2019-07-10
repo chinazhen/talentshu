@@ -1,27 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<META HTTP-EQUIV="pragma" CONTENT="no-cache">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>八卦罗盘时钟</title>
-
-<link rel="stylesheet" href="css/demo.css">
-<script src="js/clock/jieqi.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>八卦罗盘时钟</title>
+    <link rel="stylesheet" href="css/demo.css">
 </head>
 <body>
+<div class="top">
+    <div class="span-top">
+        <div style="position: absolute;z-index: 99999">
+            <ul>
+                <li>姓名：<input id="name" type="text"> </li>
+                <li>性别：
+                    <select id="sexSelect">
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
+                </li>
+                <li>生日（农历）：
+                    <select id="yearSelect"></select>&nbsp;年&nbsp;
+                    <select id="monthSelect"></select>&nbsp;月&nbsp;
+                    <select id="daySelect"></select>&nbsp;日&nbsp;
+                    <select id="timeSelect"></select>&nbsp;点
+                </li>
+                <li><input id="submit" class="submitBtn" type="button" value="开始测算"></li>
+            </ul>
+        </div>
+    </div>
+    <div class="span-top">
+    </div>
+    <div class="span-top">
+        <div>
+            <div id="showDiv" style="display: none;">
+                <span class="title" >解析结果：</span>
+                <span class="information" id="information"></span>
+                <span class="more">更多信息>>></span>
+            </div>
+        </div>
+    </div>
+    <div class="span-top"></div>
+    <div class="span-top"></div>
+    <div class="span-top"></div>
+    <div class="span-top"></div>
+    <div class="span-top"></div>
+    <div class="span-top">	</div>
+</div>
+<div class="baGua" style="left: 620px;top: 45px; z-index: 99">
+    <span style="position:relative;">乾</span>
+</div>
+<div class="baGua" style="left: 850px;top: 150px; z-index: 99">
+    <span style="position:relative;">坤</span>
+</div>
+<div class="baGua" style="left: 910px;top: 325px; z-index: 99">
+    <span style="position:relative;">震</span>
+</div>
+<div class="baGua" style="left: 860px;top: 500px; z-index: 99">
+    <span style="position:relative;">巽</span>
+</div>
+<div class="baGua" style="left: 620px;top: 600px; z-index: 99">
+    <span style="position:relative;">坎</span>
+</div>
+<div class="baGua" style="left: 380px;top: 500px; z-index: 99">
+    <span style="position:relative;">离</span>
+</div>
+<div class="baGua" style="left: 320px;top: 320px; z-index: 99">
+    <span style="position:relative;">艮</span>
+</div>
+<div class="baGua" style="left: 380px;top:150px; z-index: 99">
+    <span style="position:relative;">兑</span>
+</div>
+
 
 <div id="clock"></div>
-
+<script src="js/clock/jieqi.js"></script>
+<script src="js/clock/date.js"></script>
 <script>
-
     window.onload = function() {
+        initDate();
         init();
         setInterval(function() {runTime();}, 100);
         changePosition();
         setTimeout(function() {changeCircle();}, 2000);
+
+        document.getElementById("submit").addEventListener('click', test, false);
+
     };
+
+    function test() {
+        var name = document.getElementById("name").value;
+        var sex = document.getElementById("sexSelect").value;
+        var year = document.getElementById("yearSelect").value;
+        var month = document.getElementById("monthSelect").value;
+        var day = document.getElementById("daySelect").value;
+        var time = document.getElementById("timeSelect").value;
+
+        if (!name) {
+            alert("您好像还没输入您的贵姓呢 ！");
+            document.getElementById("name").focus();
+            return;
+        }
+
+        if (!sex) {
+            alert("您还没有选择性别呢 ！");
+            document.getElementById("sexSelect").focus();
+            return;
+        }
+
+        if (!year || !month || !day) {
+            alert("请准确填写你的出生时日 ！");
+            document.getElementById("yearSelect").focus();
+            return;
+        }
+
+        document.getElementById("submit").value = "正在计算 ...";
+
+        setTimeout(function() {showInformation();}, 2000);
+    }
+
+    function showInformation() {
+        document.getElementById("showDiv").style.display = "block";
+        var info = document.getElementById("information");
+        info.innerText = "命运处于关键阶段，非历经磨难不得解脱，命有天罗困之。近年困难重重，想尽一切办法希望与希望总在一瞬间转换。" +
+            "命范天罗带白虎，运阻于网外，无法逃脱。心情易怒，消极暴戾。若不能合理化解，恐有白虎变故，若能平安渡过往后道路必将万丈光芒 ~ ";
+
+        document.getElementById("submit").value = "开始测算";
+
+    }
 
 </script>
 
