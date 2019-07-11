@@ -89,14 +89,15 @@
                 <h4 class="modal-title" id="myModalLabel">每天仅为8位有缘人详细化解苦难</h4>
             </div>
             <div class="modal-body">
-                <p>施主施舍香油钱，与大师结缘，听大师亲自详解</p>
                 <p>输入您的测算ID：<input id="yuceId" type="text"></p>
-                <p>输入您微信号：<input type="text"></p>
-                <p><img src="img/wechat.png" style="width:200px;height:200px"></p>
+                <p>微信号（大师互加）：<input id="wechat" type="text"></p>
+                <p>手机号（详细结果）：<input id="mobile" type="text"></p>
+                <p>施主施舍香油钱，与大师结缘，听大师亲自详解</p>
+                <p><img src="img/wechat.png" style="margin-left:20%;width:300px;height:300px"></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">离去</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">确定结缘</button>
+                <button type="button" id="sureBtn" disabled="disabled" class="btn btn-primary" data-dismiss="modal">确定结缘</button>
             </div>
         </div>
     </div>
@@ -117,6 +118,14 @@
         document.getElementById("submit").addEventListener('click', test, false);
 
         setInterval(function () {changeColor()},1000);
+
+        $("#wechat").bind("input propertychange",function () {
+            checkMobile();
+        });
+
+        $("#mobile").bind("input propertychange",function () {
+            checkMobile();
+        });
 
     });
 
@@ -196,6 +205,20 @@
         return pwd;
     }
 
+    function checkMobile() {
+        var wechat = $("#wechat").val();
+        var mobile = $("#mobile").val();
+        if (isNaN(mobile)) {
+            alert("手机号貌似填错了......")
+            return;
+        }
+
+        if (mobile.length === 11 && wechat.length >= 5) {
+            $("#sureBtn").removeAttr("disabled");
+        }else {
+            $("#sureBtn").attr("disabled","disabled");
+        }
+    }
 </script>
 
 </body>
