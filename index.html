@@ -209,7 +209,9 @@
         var wechat = $("#wechat").val();
         var mobile = $("#mobile").val();
         if (isNaN(mobile)) {
-            alert("手机号貌似填错了......")
+            alert("手机号貌似填错了......");
+            $("#mobile").val("");
+            $("#mobile").focus();
             return;
         }
 
