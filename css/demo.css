@@ -37,7 +37,7 @@ html,body{
 }
 
 .span-top span.title {
-    font-size: 24px;
+    font-size: 16px;
     color: #f9f2f4;
 }
 
@@ -49,7 +49,18 @@ html,body{
 
 .span-top span.more {
     color: #FFA500;
-    font-size: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    width: 125px;
+    float: right;
+}
+
+.span-top span.more:hover {
+    color: #f9f2f4;
+    font-size: 14px;
+    cursor: pointer;
+    width: 125px;
+    float: right;
 }
 
 #clock{
@@ -103,8 +114,17 @@ ul li input,select {
     border: 1px solid #ccc;
     border-radius: 3px;
     padding: 5px 5px;
+    color: #000;
 }
 .submitBtn {
     width: 85%;
-    color: #FFA500;
+    background: #FFD700;
+    color: #ffffff;
+    font-size:16px;
+}
+.submitBtn:hover {
+    width: 85%;
+    background: #FFD7FF;
+    color: #ffffff;
+    font-size:16px;
 }

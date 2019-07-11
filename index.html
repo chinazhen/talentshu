@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <META HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>八卦罗盘时钟</title>
+    <title>周易卜问（卜卦、问运） 深山无名道观</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="css/clock.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="top">
@@ -35,9 +41,9 @@
     <div class="span-top">
         <div>
             <div id="showDiv" style="display: none;">
-                <span class="title" >解析结果：</span>
+                <span id="idStrSpan" class="title" ></span>
                 <span class="information" id="information"></span>
-                <span class="more">更多信息>>></span>
+                <span id="more" data-toggle="modal" data-target="#myModal" class="more">>>> 更多信息 <<<</span>
             </div>
         </div>
     </div>
@@ -73,12 +79,35 @@
     <span style="position:relative;">兑</span>
 </div>
 
+<div class="modal fade" id="myModal" tabindex="-1" style="z-index: 999999999;" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">每天仅为8位有缘人详细化解苦难</h4>
+            </div>
+            <div class="modal-body">
+                <p>施主施舍香油钱，与大师结缘，听大师亲自详解</p>
+                <p>输入您的测算ID：<input id="yuceId" type="text"></p>
+                <p>输入您微信号：<input type="text"></p>
+                <p><img src="img/wechat.png" style="width:200px;height:200px"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">离去</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定结缘</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <div id="clock"></div>
 <script src="js/clock/jieqi.js"></script>
 <script src="js/clock/date.js"></script>
 <script>
-    window.onload = function() {
+    $(function () {
         initDate();
         init();
         setInterval(function() {runTime();}, 100);
@@ -87,31 +116,33 @@
 
         document.getElementById("submit").addEventListener('click', test, false);
 
-    };
+        setInterval(function () {changeColor()},1000);
+
+    });
 
     function test() {
-        var name = document.getElementById("name").value;
-        var sex = document.getElementById("sexSelect").value;
-        var year = document.getElementById("yearSelect").value;
-        var month = document.getElementById("monthSelect").value;
-        var day = document.getElementById("daySelect").value;
-        var time = document.getElementById("timeSelect").value;
+        var name = $("#name").val();
+        var sex =  $("#sexSelect").val();
+        var year = $("#yearSelect").val();
+        var month = $("#monthSelect").val();
+        var day = $("#daySelect").val();
+        var time = $("#timeSelect").val();
 
         if (!name) {
             alert("您好像还没输入您的贵姓呢 ！");
-            document.getElementById("name").focus();
+            $("#name").focus();
             return;
         }
 
         if (!sex) {
             alert("您还没有选择性别呢 ！");
-            document.getElementById("sexSelect").focus();
+            $("#sexSelect").focus();
             return;
         }
 
         if (!year || !month || !day) {
             alert("请准确填写你的出生时日 ！");
-            document.getElementById("yearSelect").focus();
+            $("#yearSelect").focus();
             return;
         }
 
@@ -120,14 +151,49 @@
         setTimeout(function() {showInformation();}, 2000);
     }
 
+    var yuceId;
     function showInformation() {
-        document.getElementById("showDiv").style.display = "block";
-        var info = document.getElementById("information");
-        info.innerText = "命运处于关键阶段，非历经磨难不得解脱，命有天罗困之。近年困难重重，想尽一切办法希望与希望总在一瞬间转换。" +
-            "命范天罗带白虎，运阻于网外，无法逃脱。心情易怒，消极暴戾。若不能合理化解，恐有白虎变故，若能平安渡过往后道路必将万丈光芒 ~ ";
+        $("#showDiv").css("display","block");
+        $("#information").text("命运处于关键阶段，非历经磨难不得解脱，命有天罗困之。近年困难重重，想尽一切办法希望与希望总在一瞬间转换。" +
+            "命范天罗带白虎，运阻于网外，无法逃脱。心情易怒，消极暴戾。若不能合理化解，恐有白虎变故，若能平安渡过往后道路必将万丈光芒 ~ ");
+        $("#submit").val("开始测算");
+        yuceId = randomString(8);
+        $("#idStrSpan").text("预测ID:"+ yuceId +", 解析结果：");
 
-        document.getElementById("submit").value = "开始测算";
+        $("#yuceId").val(yuceId);
+    }
 
+    var idx = 0;
+    var color1 = "#FFFACD";
+    var color2= "#FFA500";
+    function changeColor() {
+        var guas = $(".baGua");
+        if (idx >= guas.length)
+            idx = 0;
+        if (idx > 0){
+            guas[idx - 1].style.color = color1;
+            guas[idx - 1].style.fontSize = "46px";
+        }
+
+        if (idx === 0) {
+            guas[guas.length-1].style.color = color1;
+            guas[guas.length-1].style.fontSize = "46px";
+        }
+
+        guas[idx].style.color = color2;
+        guas[idx].style.fontSize = "48px";
+        idx += 1;
+    }
+
+    function randomString(len) {
+        len = len || 32;
+        var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+        var maxPos = $chars.length;
+        var pwd = '';
+        for (var i = 0; i < len; i++) {
+            pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+        }
+        return pwd;
     }
 
 </script>
