@@ -234,3 +234,95 @@ function changePosition() {
         }
     }
 }
+
+function test() {
+    var name = $("#name").val();
+    var sex =  $("#sexSelect").val();
+    var year = $("#yearSelect").val();
+    var month = $("#monthSelect").val();
+    var day = $("#daySelect").val();
+    var time = $("#timeSelect").val();
+
+    if (!name) {
+        alert("您好像还没输入您的贵姓呢 ！");
+        $("#name").focus();
+        return;
+    }
+
+    if (!sex) {
+        alert("您还没有选择性别呢 ！");
+        $("#sexSelect").focus();
+        return;
+    }
+
+    if (!year || !month || !day) {
+        alert("请准确填写你的出生时日 ！");
+        $("#yearSelect").focus();
+        return;
+    }
+
+    document.getElementById("submit").value = "正在计算 ...";
+
+    setTimeout(function() {showInformation();}, 2000);
+}
+
+var yuceId;
+function showInformation() {
+    $("#showDiv").css("display","block");
+    $("#information").text("命运处于关键阶段，非历经磨难不得解脱，命有天罗困之。近年困难重重，想尽一切办法希望与希望总在一瞬间转换。" +
+        "命范天罗带白虎，运阻于网外，无法逃脱。心情易怒，消极暴戾。若不能合理化解，恐有白虎变故，若能平安渡过往后道路必将万丈光芒 ~ ");
+    $("#submit").val("开始测算");
+    yuceId = randomString(8);
+    $("#idStrSpan").text("预测ID:"+ yuceId +", 解析结果：");
+
+    $("#yuceId").val(yuceId);
+}
+
+var idx = 0;
+var color1 = "#FFFACD";
+var color2= "#FFA500";
+function changeColor() {
+    var guas = $(".baGua");
+    if (idx >= guas.length)
+        idx = 0;
+    if (idx > 0){
+        guas[idx - 1].style.color = color1;
+        guas[idx - 1].style.fontSize = "46px";
+    }
+
+    if (idx === 0) {
+        guas[guas.length-1].style.color = color1;
+        guas[guas.length-1].style.fontSize = "46px";
+    }
+
+    guas[idx].style.color = color2;
+    guas[idx].style.fontSize = "48px";
+    idx += 1;
+}
+
+function randomString(len) {
+    len = len || 32;
+    var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+    var maxPos = $chars.length;
+    var pwd = '';
+    for (var i = 0; i < len; i++) {
+        pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+    }
+    return pwd;
+}
+
+function checkMobile() {
+    var mobile = $("#mobile").val();
+    if (isNaN(mobile) || mobile.length > 11) {
+        alert("手机号貌似填错了......");
+        $("#mobile").val("");
+        $("#mobile").focus();
+        return;
+    }
+
+    if (mobile.length === 11) {
+        $("#sureBtn").removeAttr("disabled");
+    }else {
+        $("#sureBtn").attr("disabled","disabled");
+    }
+}
